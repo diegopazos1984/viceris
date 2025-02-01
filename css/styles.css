@@ -1,0 +1,208 @@
+:root {
+    --line-color: rgba(255, 255, 255, 0.4);
+    --shape-color: rgba(255, 255, 255, 1);
+    --accent-color: rgba(0, 255, 255, 0.9);
+    --glow-color: rgba(0, 255, 255, 0.6);
+}
+
+.animation-container {
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.scene {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.technical-grid {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90vw;
+    max-height: 90vh;
+}
+
+.grid-line {
+    stroke: var(--line-color);
+    stroke-width: 1.5;
+    opacity: 0.5;
+}
+
+.tech-shape {
+    fill: none;
+    stroke: var(--shape-color);
+    stroke-width: 6;
+    filter: drop-shadow(0 0 30px var(--glow-color));
+}
+
+.dragon-body {
+    stroke-width: 10;
+    filter: drop-shadow(0 0 45px var(--accent-color));
+}
+
+.tech-line {
+    stroke: var(--shape-color);
+    stroke-width: 4;
+    stroke-dasharray: 12,6;
+    opacity: 0.9;
+}
+
+.spine {
+    stroke-width: 3;
+    stroke-dasharray: 15,7;
+    opacity: 1;
+}
+
+.scale {
+    stroke-width: 1;
+    opacity: 0.7;
+}
+
+.construction-lines line {
+    stroke-dasharray: 5,3;
+    opacity: 0.4;
+}
+
+.dragon-structure {
+    transform-origin: center center;
+}
+
+.particle {
+    fill: var(--shape-color);
+    filter: drop-shadow(0 0 8px var(--accent-color));
+}
+
+.ring {
+    fill: none;
+    stroke: var(--shape-color);
+    stroke-width: 2;
+    stroke-dasharray: 10,5;
+    filter: drop-shadow(0 0 25px var(--accent-color));
+}
+
+.collision-path {
+    fill: none;
+    stroke: var(--accent-color);
+    stroke-width: 2;
+    stroke-dasharray: 20,10;
+    opacity: 0.8;
+}
+
+.outer-ring {
+    stroke-width: 2;
+    stroke-dasharray: 30,15;
+}
+
+.core-ring {
+    stroke-width: 3;
+    stroke-dasharray: 15,7;
+}
+
+.particle-paths path {
+    filter: drop-shadow(0 0 10px rgba(0,255,255,0.6));
+}
+
+.dragon-head {
+    filter: drop-shadow(0 0 20px var(--accent-color));
+}
+
+.eye {
+    fill: var(--accent-color);
+    stroke-width: 1;
+    filter: drop-shadow(0 0 10px var(--accent-color));
+}
+
+.wing-frame {
+    stroke-width: 2;
+    filter: drop-shadow(0 0 25px var(--glow-color));
+}
+
+.wing-details line {
+    stroke-dasharray: 8,4;
+    opacity: 0.6;
+}
+
+.circuit-line {
+    stroke: var(--accent-color);
+    stroke-width: 1;
+    stroke-dasharray: 15,5;
+    opacity: 0.8;
+    filter: drop-shadow(0 0 15px var(--accent-color));
+}
+
+.node {
+    fill: var(--accent-color);
+    filter: drop-shadow(0 0 15px var(--accent-color));
+}
+
+/* Estilos para el botón técnico */
+.tech-button {
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.button-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.button-border {
+    fill: none;
+    stroke: var(--shape-color);
+    stroke-width: 3;
+    filter: drop-shadow(0 0 15px var(--glow-color));
+}
+
+.button-line {
+    stroke: var(--accent-color);
+    stroke-width: 3;
+    transition: all 0.3s ease;
+}
+
+.tech-button:hover .button-border {
+    filter: drop-shadow(0 0 15px var(--accent-color));
+}
+
+.tech-button:hover .button-line {
+    stroke: var(--shape-color);
+    filter: drop-shadow(0 0 8px var(--glow-color));
+}
+
+.button-text {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--shape-color);
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.tech-button:hover .button-text {
+    opacity: 1;
+}
