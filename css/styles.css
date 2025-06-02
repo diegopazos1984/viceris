@@ -1,0 +1,287 @@
+:root {
+    --accent-color: #4f9;
+    --shape-color: #0ff;
+    --line-color: rgba(255, 255, 255, 0.3);
+    --glow-color: rgba(0, 255, 255, 0.6);
+    --dragon-scale-desktop: 3.5;  /* Aumentado de 2.5 a 3.5 */
+    --dragon-scale-tablet: 2.5;   /* Aumentado de 1.8 a 2.5 */
+    --dragon-scale-mobile: 1.5;   /* Aumentado de 1.2 a 1.5 */
+}
+
+/* Estilos base */
+body {
+    margin: 0;
+    background: #1b0101;
+    overflow: hidden;
+}
+
+.animation-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.dragon-structure {
+    transform-origin: center center;
+    position: relative;
+    z-index: 20; /* Número más alto para estar delante */
+    filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.3));
+    pointer-events: none; /* Permite interactuar con elementos debajo */
+}
+
+.particle-system {
+    position: relative;
+    z-index: 10; /* Número más bajo para estar detrás */
+    opacity: 0;
+}
+
+.collider-rings {
+    position: relative;
+    z-index: 5; /* Aún más abajo */
+}
+
+/* Media queries para responsividad */
+@media screen and (min-width: 1200px) {
+    .dragon-structure {
+        transform: scale(var(--dragon-scale-desktop));
+    }
+
+    .shape-container {
+        width: 90vw;
+        height: 90vh;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    .dragon-structure {
+        transform: scale(var(--dragon-scale-tablet));
+    }
+
+    .shape-container {
+        width: 85vw;
+        height: 85vh;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .dragon-structure {
+        transform: scale(var(--dragon-scale-mobile));
+    }
+
+    .shape-container {
+        width: 95vw;
+        height: 95vh;
+    }
+}
+
+/* Ajuste para mejor visualización en diferentes orientaciones */
+@media screen and (orientation: landscape) {
+    .dragon-structure {
+        transform: scale(var(--dragon-scale-desktop)) translateY(-10%);
+    }
+}
+
+/* Ajustes para animaciones responsivas */
+@media (prefers-reduced-motion: reduce) {
+    .dragon-structure {
+        transition: transform 0.3s ease;
+    }
+}
+
+/* Estilos para elementos técnicos */
+.tech-shape {
+    fill: none;
+    stroke: var(--shape-color);
+    stroke-width: 2;
+    filter: drop-shadow(0 0 5px var(--glow-color));
+}
+
+.tech-line {
+    stroke: var(--line-color);
+    stroke-width: 1;
+}
+
+/* Resto de los estilos... */
+
+
+
+.grid-line {
+    stroke: var(--line-color);
+    stroke-width: 1.5;
+    opacity: 0.5;
+}
+
+.dragon-body {
+    stroke-width: 10;
+    filter: drop-shadow(0 0 45px var(--accent-color));
+    opacity: var(--dragon-opacity);
+    transition: var(--dragon-transition);
+}
+
+.spine {
+    stroke-width: 3;
+    stroke-dasharray: 15,7;
+    opacity: 1;
+}
+
+.scale {
+    stroke-width: 1;
+    opacity: 0.7;
+}
+
+.construction-lines line {
+    stroke-dasharray: 5,3;
+    opacity: 0.4;
+}
+
+.particle {
+    fill: var(--shape-color);
+    filter: drop-shadow(0 0 8px var(--accent-color));
+}
+
+.ring {
+    fill: none;
+    stroke: var(--shape-color);
+    stroke-width: 2;
+    stroke-dasharray: 10,5;
+    filter: drop-shadow(0 0 25px var(--accent-color));
+}
+
+.collision-path {
+    fill: none;
+    stroke: var(--accent-color);
+    stroke-width: 2;
+    stroke-dasharray: 20,10;
+    opacity: 0.8;
+}
+
+.outer-ring {
+    stroke-width: 2;
+    stroke-dasharray: 30,15;
+}
+
+.core-ring {
+    stroke-width: 3;
+    stroke-dasharray: 15,7;
+}
+
+.particle-paths path {
+    filter: drop-shadow(0 0 10px rgba(0,255,255,0.6));
+}
+
+.dragon-head {
+    filter: drop-shadow(0 0 20px var(--accent-color));
+}
+
+.eye {
+    fill: var(--accent-color);
+    stroke-width: 1;
+    filter: drop-shadow(0 0 10px var(--accent-color));
+}
+
+.wing-frame {
+    stroke-width: 2;
+    filter: drop-shadow(0 0 25px var(--glow-color));
+}
+
+.wing-details line {
+    stroke-dasharray: 8,4;
+    opacity: 0.6;
+}
+
+/* Ajuste de opacidades para los elementos energéticos */
+.node {
+    fill: var(--accent-color);
+    filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.3));
+    animation: nodeFloat 4s infinite alternate;
+}
+
+.node-inner {
+    animation: nodePulse 2s infinite;
+}
+
+@keyframes nodePulse {
+    0% {
+        opacity: 0.50; /* Más translúcido */
+        r: 4;
+    }
+    30% {
+        opacity: 0.3; /* Más translúcido */
+        r: 5;
+    }
+    100% {
+        opacity: 0.40; /* Más translúcido */
+        r: 4;
+    }
+}
+
+.circuit-line {
+    stroke: var(--accent-color);
+    stroke-width: 1;
+    stroke-dasharray: 15,5;
+    opacity: 0.4; /* Más translúcido */
+    filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.2));
+}
+
+.button-line {
+    stroke: var(--accent-color);
+    stroke-width: 3;
+    transition: all 0.3s ease;
+}
+
+.tech-button.active .button-line {
+    stroke: var(--shape-color);
+    filter: drop-shadow(0 0 10px var(--accent-color));
+}
+
+svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.shape-container {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+/* Estilos para el botón técnico */
+.tech-button {
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.button-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.button-glow {
+    fill: none;
+    stroke: var(--accent-color);
+    stroke-width: 2;
+    opacity: 0;
+    transform-origin: center;
+}
+
+.tech-button.active .button-glow {
+    animation: glowPulse 2s infinite;
+}
+
+@keyframes glowPulse {
+    0% { opacity: 0; transform: scale(0.8); }
+    50% { opacity: 0.5; transform: scale(1.1); }
+    100% { opacity: 0; transform: scale(0.8); }
+}
